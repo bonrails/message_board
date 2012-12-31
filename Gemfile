@@ -47,9 +47,8 @@ gem 'taps'
 group :development, :test do
   gem 'pry'
 end
-group :production do
-  gem 'pg'
-end
+gem 'pg', '~>0.13.2'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
