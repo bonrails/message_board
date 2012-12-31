@@ -1,0 +1,28 @@
+-if notice
+  .alert.alert-success
+    = notice
+.container
+  - @posts.each do |post|
+    .row-fluid.show-grid.badge.message_list{:id=>post.id}
+
+      .span10
+        .pull-left.icon-padding
+          = link_to post do
+            .icon-pencil.icon-align-left
+
+        %p.message_para
+          = link_to post do
+            .message
+              =post.title
+          %br
+            %small.message_para
+              = decorate_message_tag(post)
+        = #link_to 'Edit', edit_post_path(post)
+      .span1.pull-right
+        -if current_user == post.user
+          = link_to  post, :confirm => 'Are you sure?', :method => :delete, :remote => true,:class=>'message_delete' do
+            .icon-remove-circle{:style => 'margin-top:20px;'}
+
+    %br
+
+

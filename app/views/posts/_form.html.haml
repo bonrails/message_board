@@ -1,0 +1,22 @@
+
+= form_for @post do |f|
+  -if @post.errors.any?
+    .alert.alert-error
+      %h2= "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
+      %ul
+        - @post.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :message
+    = f.text_area :message, :rows=>"5"
+  = f.hidden_field :user_id, :value => current_user.id
+  .pull-left
+    = f.submit 'Submit',:class => 'btn btn-warning'
+  -unless @post.new_record?
+    .pull-left.offset1
+      = button_to "Delete" , @post,:confirm => 'Are you sure?', :method => :delete,:class =>'btn btn-inverse'
+

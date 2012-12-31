@@ -1,0 +1,22 @@
+-if current_user
+  .navbar.navbar-inverse
+    .navbar-inner
+      .container
+        %ul.nav.pull-left
+          %li.label.label-inverse.badge
+            = link_to  new_post_path do
+              .icon-check.icon-white.icon-align-left
+              Post
+        %ul.nav.pull-right
+          %li.label.label-inverse.badge
+            = link_to 'List', posts_path
+          %li.divider-vertical
+          .btn-group
+            %a.btn.dropdown-toggle{:"data-toggle"=>"dropdown"}
+              = current_user.name
+              %span.caret
+            %ul.dropdown-menu
+              = link_to "Sign out", destroy_user_session_path, :method => :delete
+-else
+  =render :template=>'shared/login'
+

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MessageBoard</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "/bootstrap/css/bootstrap", :media => "all" %>
+
+  <%= javascript_include_tag "application" %>
+
+  <%= javascript_include_tag "/bootstrap/js/bootstrap" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id="page" class="page">
+  <div class="container">
+  <%=render :partial=>'shared/navigation_top_bar'  %>
+    <%if current_user %>
+      <%= yield %>
+  <% end %>
+  </div>
+</div>
+
+</body>
+</html>

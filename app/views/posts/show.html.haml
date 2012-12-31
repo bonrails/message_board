@@ -1,0 +1,29 @@
+-if notice
+  .alert.alert-success
+    = notice
+.container
+
+  .well
+    .row-fluid.show-grid
+      .span10
+        .pull-left.icon-padding
+          .icon-pencil.icon-align-left
+
+        %p.message_para
+          = link_to @post do
+            .message
+              =@post.title
+          %br
+            %small.message_para
+              = decorate_message_tag(@post)
+      %br
+    .row-fluid.show-grid
+      .span
+        %hr
+      %p
+        = @post.message
+      -if current_user == @post.user
+        = link_to edit_post_path(@post) do
+          .btn.btn-primary.pull-right
+            Edit
+
